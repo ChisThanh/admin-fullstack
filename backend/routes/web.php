@@ -23,7 +23,7 @@ Route::get('/greeting/{locale}', function (string $locale) {
     }
     $cookie = cookie('locale', $locale, 60 * 24 * 30);
     app()->setLocale($locale);
-    return redirect()->back()->withCookie($cookie);
+    return response()->json(['success' => true])->withCookie($cookie);
 });
 
 require __DIR__ . '/auth.php';

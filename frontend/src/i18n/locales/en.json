@@ -1,0 +1,32 @@
+{
+  "app-bar": {
+    "title": "Admin Page",
+    "vietnamese": "Vietnamese",
+    "english": "English",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "users": "Users",
+    "products": "Products",
+    "categories": "Categories",
+    "chat": "Chats"
+  },
+  "title": "Admin Page",
+  "vietnamese": "Vietnamese",
+  "english": "English",
+  "dashboard": "Dashboard",
+  "orders": "Orders",
+  "users": "Users",
+  "products": "Products",
+  "categories": "Categories",
+  "chat": "Chats",
+  "register": "Register",
+  "login": "Login",
+  "logout": "Logout",
+  "profile": "Profile"
+}

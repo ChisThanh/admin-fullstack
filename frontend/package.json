@@ -8,11 +8,13 @@
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@intlify/unplugin-vue-i18n": "^4.0.0",
     "@mdi/font": "7.0.96",
     "axios": "^1.7.2",
     "core-js": "^3.34.0",
     "roboto-fontface": "*",
     "vue": "^3.4.0",
+    "vue-i18n": "^9.13.1",
     "vuetify": "^3.5.0"
   },
   "devDependencies": {

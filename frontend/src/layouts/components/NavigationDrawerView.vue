@@ -39,12 +39,20 @@ const navStore = useNavStore();
 
 const open = ref([]);
 
-const navItems = [
-  { text: "Dashboard", icon: "mdi-view-dashboard", url: "/admin/dashboard" },
-  { text: "Order", icon: "mdi-cart-arrow-right", url: "/admin/orders" },
-  { text: "Users", icon: "mdi-account-multiple", url: "/admin/users" },
-  { text: "Chats", icon: "mdi-chat", url: "/admin/chats" },
-];
+const navItems = computed(() => [
+  {
+    text: "Dashboard",
+    icon: "mdi-view-dashboard",
+    url: "/admin/dashboard",
+  },
+  {
+    text: "Orders",
+    icon: "mdi-cart-arrow-right",
+    url: "/admin/orders",
+  },
+  // { text: t.value.users, icon: "mdi-account-multiple", url: "/admin/users" },
+  // { text: t.value.chat, icon: "mdi-chat", url: "/admin/chats" },
+]);
 
 const navProducts = [
   { text: "View Products", icon: "mdi-information" },

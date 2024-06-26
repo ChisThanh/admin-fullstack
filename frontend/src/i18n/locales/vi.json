@@ -1,0 +1,32 @@
+{
+  "app-bar": {
+    "title": "Trang quản trị",
+    "vietnamese": "Tiếng Việt",
+    "english": "Tiếng Anh",
+    "register": "Đăng ký",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "profile": "Hồ sơ"
+  },
+  "nav": {
+    "dashboard": "Bảng điều khiển",
+    "orders": "Đơn hàng",
+    "users": "Người dùng",
+    "products": "Sản phẩm",
+    "categories": "Danh mục",
+    "chat": "Trò chuyện"
+  },
+  "title": "Trang quản trị",
+  "vietnamese": "Tiếng Việt",
+  "english": "Tiếng Anh",
+  "dashboard": "Bảng điều khiển",
+  "orders": "Đơn hàng",
+  "users": "Người dùng",
+  "products": "Sản phẩm",
+  "categories": "Danh mục",
+  "chat": "Trò chuyện",
+  "register": "Đăng ký",
+  "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "profile": "Hồ sơ"
+}
