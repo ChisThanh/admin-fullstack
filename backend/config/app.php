@@ -85,8 +85,8 @@ return [
     |
     */
 
-    'locale' => 'en',
-
+    'locale' => 'vi',
+    'locales' => ['en', 'vi'],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -111,6 +111,7 @@ return [
     |
     */
 
+    // 'faker_locale' => 'vi_VN',
     'faker_locale' => 'en_US',
 
     /*

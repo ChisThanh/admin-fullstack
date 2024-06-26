@@ -11,12 +11,23 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: () => import("@/pages/auth/login.vue"),
+      component: () => import("@/pages/auth/Login.vue"),
     },
     {
       path: "/register",
       name: "register",
-      component: () => import("@/pages/auth/register.vue"),
+      component: () => import("@/pages/auth/Register.vue"),
+    },
+    {
+      path: "/forgot-password",
+      name: "forgot-password",
+      component: () => import("@/pages/auth/ForgotPassword.vue"),
+    },
+    { path: "/password-reset", redirect: "/login" },
+    {
+      path: "/password-reset/:token",
+      name: "password-reset",
+      component: () => import("@/pages/auth/PasswordReset.vue"),
     },
     ...admin,
   ],

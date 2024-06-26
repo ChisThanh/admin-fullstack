@@ -20,8 +20,6 @@ const authThemeMask = computed(() => {
     : authV1MaskDark;
 });
 
-const isPasswordVisible = ref(false);
-
 const { global } = useTheme();
 
 const authProviders = [
@@ -44,28 +42,19 @@ const authProviders = [
 
 const isLoading = ref(false);
 const formRef = ref(null);
-const form = ref({
-  email: "chisthanhdev@gmail.com",
-  password: "1234567",
-  remember: true,
-});
+const dialog = ref(false);
+const form = ref("chisthanhdev@gmail.com");
 
-const rules = {
-  email: [
-    (v) => !!v || "Email is required",
-    (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-  ],
-  password: [
-    (v) => !!v || "Password is required",
-    (v) => (v && v.length >= 8) || "Password must be greater than 8 characters",
-  ],
-};
-
+const rules = [
+  (v) => !!v || "Email is required",
+  (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+];
 const validate = async () => {
   isLoading.value = true;
   const { valid } = await formRef.value.validate();
   if (valid) {
-    await authStore.handleLogin(form.value);
+    await authStore.handleForgotPassword(form.value);
+    dialog.value = true;
   } else {
     console.log("Form is invalid");
   }
@@ -93,7 +82,7 @@ onUnmounted(() => {
             </template>
 
             <VCardTitle class="font-weight-semibold text-2xl text-uppercase">
-              Login
+              Forgot Password
             </VCardTitle>
           </VCardItem>
 
@@ -101,9 +90,6 @@ onUnmounted(() => {
             <h5 class="text-h5 font-weight-semibold mb-1">
               Welcome to the admin page! 👋🏻
             </h5>
-            <p class="mb-0">
-              Please sign-in to your account and start the adventure
-            </p>
           </VCardText>
 
           <VCardText>
@@ -112,7 +98,7 @@ onUnmounted(() => {
                 <!-- email -->
                 <VCol cols="12">
                   <VTextField
-                    v-model="form.email"
+                    v-model="form"
                     label="Email"
                     type="email"
                     :rules="rules.email"
@@ -127,53 +113,16 @@ onUnmounted(() => {
                     </div>
                   </div>
                 </VCol>
-
-                <!-- password -->
                 <VCol cols="12">
-                  <VTextField
-                    v-model="form.password"
-                    label="Password"
-                    :rules="rules.password"
-                    placeholder="············"
-                    :type="isPasswordVisible ? 'text' : 'password'"
-                    :append-inner-icon="
-                      isPasswordVisible ? 'ri-eye-off-line' : 'ri-eye-line'
-                    "
-                    @click:append-inner="isPasswordVisible = !isPasswordVisible"
-                  />
-                  <div
-                    v-if="authStore.authErrors.password"
-                    class="v-input__details"
-                  >
-                    <div
-                      class="v-messages__message text-error"
-                      style="padding: 6px 16px 0px"
-                    >
-                      {{ authStore.authErrors.password[0] }}
-                    </div>
-                  </div>
-                  <!-- remember me checkbox -->
-                  <div
-                    class="d-flex align-center justify-space-between flex-wrap mt-1 mb-4"
-                  >
-                    <VCheckbox v-model="form.remember" label="Remember me" />
-
-                    <a class="ms-2 mb-1 text-primary" href="javascript:void(0)">
-                      Forgot Password?
-                    </a>
-                  </div>
-
-                  <!-- login button -->
                   <VBtn
                     block
                     type="submit"
                     @click="validate"
                     :loading="isLoading"
                   >
-                    Login
+                    Send Mail
                   </VBtn>
                 </VCol>
-
                 <!-- create account -->
                 <VCol cols="12" class="text-center text-base">
                   <span>New on our platform?</span>
@@ -222,6 +171,25 @@ onUnmounted(() => {
         <!-- bg img -->
         <VImg class="auth-footer-mask d-none d-md-block" :src="authThemeMask" />
       </div>
+
+      <v-dialog v-model="dialog" width="auto">
+        <v-card
+          color="success"
+          max-width="400"
+          prepend-icon="mdi-bell"
+          text="We have emailed your password reset link."
+          title="Notification"
+        >
+          <template v-slot:actions>
+            <v-btn
+              class="ms-auto"
+              text="Ok"
+              color="white"
+              @click="dialog = false"
+            ></v-btn>
+          </template>
+        </v-card>
+      </v-dialog>
     </div>
   </v-app>
 </template>

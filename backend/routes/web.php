@@ -17,4 +17,13 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-require __DIR__.'/auth.php';
+Route::get('/greeting/{locale}', function (string $locale) {
+    if (!in_array($locale, config('app.locales'))) {
+        $locale = config('app.fallback_locale');
+    }
+    $cookie = cookie('locale', $locale, 60 * 24 * 30);
+    app()->setLocale($locale);
+    return redirect()->back()->withCookie($cookie);
+});
+
+require __DIR__ . '/auth.php';
